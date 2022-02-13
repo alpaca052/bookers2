@@ -18,3 +18,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+#notice {
+  color: green;
+}
+
+#error_explanation{
+  color: red;
+}

@@ -1,4 +1,4 @@
-<div class="container mx-auto">
+<div class="container">
   <%= render 'error', obj: @book %>
   <div class="row">
     <div class="col-md-3">
@@ -29,6 +29,22 @@
             </td>
             <td>
               <%= book.body %>
+            </td>
+            <td>
+              <% if book.favorited_by?(current_user) %>
+                <%= link_to book_favorites_path(book), method: :delete, class:"text-danger" do %>
+                  <i class="fa-solid fa-heart"></i>
+                  <%= book.favorites.count %>
+                <% end %>
+              <% else %>
+                <%= link_to book_favorites_path(book), method: :post do %>
+                  <i class="fa-solid fa-heart"></i>
+                  <%= book.favorites.count %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <p>コメント数：<%= book.book_comments.count %></p>
             </td>
           </tr>
           <% end %>
